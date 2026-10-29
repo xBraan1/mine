@@ -1,0 +1,180 @@
+@import "tailwindcss";
+
+@theme {
+  /* xBraan1 Signature Theme - Pure Black & White */
+  --color-midnight: #000000;
+  --color-charcoal: #080808;
+  --color-offwhite: #FFFFFF;
+  --color-slate-muted: #A0A0A0;
+  --color-teal-accent: #FFFFFF;
+  --color-teal-light: #E0E0E0;
+  --color-teal-dark: #D0D0D0;
+  --color-surface-light: #0A0A0A;
+  --color-surface-dark: #050505;
+  --color-border-light: #1A1A1A;
+  --color-border-dark: #1A1A1A;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-script: 'Alex Brush', cursive;
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+/* Force dark theme always - xBraan1 signature is always dark */
+html, html.light, html.dark {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+/* Focus styles - subtle white */
+:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom scrollbar - dark theme */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}
+
+/* Selection - inverted */
+::selection {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+/* Prose styles - dark theme */
+.prose {
+  color: #A0A0A0;
+}
+
+.prose h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #FFFFFF;
+}
+
+.prose h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #FFFFFF;
+}
+
+.prose p {
+  margin-bottom: 1rem;
+  color: #A0A0A0;
+}
+
+.prose ul, .prose ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  color: #A0A0A0;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+}
+
+.prose strong {
+  color: #FFFFFF;
+}
+
+.prose a {
+  color: #FFFFFF;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose a:hover {
+  opacity: 0.8;
+}
+
+/* Subtle hover effects */
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+/* Elegant fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Signature flourish line */
+.signature-line {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  height: 1px;
+}
+
+/* Signature text styling */
+.signature-text {
+  font-family: 'Alex Brush', cursive;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  position: relative;
+  display: inline-block;
+  line-height: 1.2;
+}
+
+.signature-text::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  right: 5%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, currentColor 20%, currentColor 80%, transparent);
+  opacity: 0.2;
+}
